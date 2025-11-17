@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { Textarea } from "../ui/textarea"
 import { Button } from "../ui/button"
 import { toast } from "sonner"
-import Comment from "./Comment"
+import Comment from "./comment"
 
 const baseURL =
   import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
