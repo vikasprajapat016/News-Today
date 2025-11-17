@@ -20,18 +20,24 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  /\.vercel\.app$/,
+  /\.onrender\.com$/,
+];
+
 app.use(
   cors({
-   origin: [
-  "https://news-today-lm8p.vercel.app/",
-  "https://news-today-lm8p-fr1rpreyj-vikas-projects-255d0fe9.vercel.app/",
-  
-  "http://localhost:5173"
-],
-credentials: true
-
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.some((pattern) => pattern.test(origin))) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
   })
 );
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
