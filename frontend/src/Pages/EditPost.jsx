@@ -41,7 +41,11 @@ const EditPost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`${baseURL}/api/post/getposts?postId=${postId}`)
+        const res = await axios.get(`${baseURL}/api/post/getposts?postId=${postId}`,
+          {
+    credentials: "include", // ✅ add this
+          }
+        )
         const data = res.data.posts?.[0]
         if (data) {
           setTitle(data.title)

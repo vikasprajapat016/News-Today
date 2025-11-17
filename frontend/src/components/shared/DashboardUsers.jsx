@@ -39,7 +39,11 @@ const DashboardUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch(`${baseURL}/api/user/getusers`)
+        const res = await fetch(`${baseURL}/api/user/getusers`,
+          {
+    credentials: "include", // ✅ add this
+  }
+        )
 
         const data = await res.json()
 
@@ -64,7 +68,11 @@ const DashboardUsers = () => {
     const startIndex = users.length
 
     try {
-      const res = await fetch(`${baseURL}/api/user/getusers?startIndex=${startIndex}`)
+      const res = await fetch(`${baseURL}/api/user/getusers?startIndex=${startIndex}`,
+        {
+    credentials: "include", // ✅ add this
+  }
+      )
 
       const data = await res.json()
 
@@ -84,6 +92,9 @@ const DashboardUsers = () => {
  try {
       const res = await fetch(`${baseURL}/api/user/delete/${userIdToDelete}`, {
         method: "DELETE",
+        
+    credentials: "include", // ✅ add this
+  
       })
 
       const data = await res.json()

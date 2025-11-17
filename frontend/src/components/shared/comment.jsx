@@ -30,7 +30,11 @@ const Comment = ({ comment, onLike, onEdit, onDelete }) => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await fetch(`${baseURL}/api/user/${comment.userId}`)
+        const res = await fetch(`${baseURL}/api/user/${comment.userId}`,
+          {
+    credentials: "include", // ✅ add this
+  }
+        )
         const data = await res.json()
         if (res.ok) setUser(data)
       } catch (error) {
@@ -53,6 +57,9 @@ const Comment = ({ comment, onLike, onEdit, onDelete }) => {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content: editedContent }),
+        
+    credentials: "include", // ✅ add this
+  
       })
       if (res.ok) {
         setIsEditing(false)

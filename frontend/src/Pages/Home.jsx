@@ -12,7 +12,11 @@ const Home = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await fetch(`${baseURL}/api/post/getPosts?limit=6`)
+      const res = await fetch(`${baseURL}/api/post/getPosts?limit=6`,
+        {
+    credentials: "include", // ✅ add this
+  }
+      )
       const data = await res.json()
       if (res.ok) setPosts(data.posts)
     }

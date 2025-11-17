@@ -26,7 +26,11 @@ const PostDetails = () => {
       try {
         setLoading(true)
 
-        const res = await fetch(`${baseURL}/api/post/getposts?slug=${postSlug}`)
+        const res = await fetch(`${baseURL}/api/post/getposts?slug=${postSlug}`,
+          {
+    credentials: "include", // ✅ add this
+  }
+        )
 
         const data = await res.json()
 

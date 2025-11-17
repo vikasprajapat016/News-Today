@@ -36,7 +36,12 @@ const DashboardPosts = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch(`${baseURL}/api/post/getposts?userId=${currentUser._id}`)
+        const res = await fetch(`${baseURL}/api/post/getposts?userId=${currentUser._id}`
+        ,
+        {
+    credentials: "include", // ✅ add this
+  }
+        )
 
         const data = await res.json()
 
@@ -62,7 +67,10 @@ const DashboardPosts = () => {
 
     try {
       const res = await fetch(
-        `${baseURL}/api/post/getposts?userId=${currentUser._id}&startIndex=${startIndex}`
+        `${baseURL}/api/post/getposts?userId=${currentUser._id}&startIndex=${startIndex}`,
+        {
+    credentials: "include", // ✅ add this
+  }
       )
 
       const data = await res.json()
@@ -87,6 +95,9 @@ const DashboardPosts = () => {
         `${baseURL}/api/post/deletepost/${postIdToDelete}/${currentUser._id}`,
         {
           method: "DELETE",
+          
+    credentials: "include", // ✅ add this
+  
         }
       )
 

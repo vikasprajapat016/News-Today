@@ -58,7 +58,11 @@ const CommentSection = ({ postId }) => {
   useEffect(() => {
     const getComments = async () => {
       try {
-        const res = await fetch(`${baseURL}/api/comment/getPostComments/${postId}`)
+        const res = await fetch(`${baseURL}/api/comment/getPostComments/${postId}`,
+          {
+    credentials: "include", // ✅ add this
+  }
+        )
 
         if (res.ok) {
           const data = await res.json()
@@ -82,6 +86,9 @@ const CommentSection = ({ postId }) => {
 
       const res = await fetch(`${baseURL}/api/comment/likeComment/${commentId}`, {
         method: "PUT",
+        
+    credentials: "include", // ✅ add this
+  
       })
 
       if (res.ok) {
@@ -124,6 +131,9 @@ const handleEdit = async (comment, editedContent) => {
 
       const res = await fetch(`${baseURL}/api/comment/deleteComment/${commentId}`, {
         method: "DELETE",
+        
+    credentials: "include", // ✅ add this
+  
       })
 
       if (res.ok) {

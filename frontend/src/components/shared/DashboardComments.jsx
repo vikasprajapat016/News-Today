@@ -38,7 +38,11 @@ const DashboardComments = () => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const res = await fetch(`${baseURL}/api/comment/getcomments`)
+        const res = await fetch(`${baseURL}/api/comment/getcomments`,
+          {
+    credentials: "include", // ✅ add this
+          }
+        )
 
         const data = await res.json()
 
@@ -64,7 +68,10 @@ const DashboardComments = () => {
 
     try {
       const res = await fetch(
-        `${baseURL}/api/comment/getcomments?startIndex=${startIndex}`
+        `${baseURL}/api/comment/getcomments?startIndex=${startIndex}`,
+        {
+    credentials: "include", // ✅ add this
+        }
       )
 
       const data = await res.json()
@@ -87,6 +94,9 @@ const DashboardComments = () => {
         `${baseURL}/api/comment/deleteComment/${commentIdToDelete}`,
         {
           method: "DELETE",
+          
+    credentials: "include", // ✅ add this
+  
         }
       )
 

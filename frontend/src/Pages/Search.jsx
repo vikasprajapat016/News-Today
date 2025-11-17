@@ -58,7 +58,10 @@ const Search = () => {
 
       const searchQuery = urlParams.toString()
 
-      const res = await fetch(`${baseURL}/api/post/getposts?${searchQuery}`)
+      const res = await fetch(`${baseURL}/api/post/getposts?${searchQuery}`, 
+        {
+    credentials: "include", // ✅ add this
+  })
 
       if (!res.ok) {
         setLoading(false)
@@ -110,7 +113,11 @@ const Search = () => {
 
     const searchQuery = urlParams.toString()
 
-    const res = await fetch(`${baseURL}/api/post/getposts?${searchQuery}`)
+    const res = await fetch(`${baseURL}/api/post/getposts?${searchQuery}`,
+      {
+    credentials: "include", // ✅ add this
+  }
+    )
 
     if (!res.ok) {
       return
