@@ -11,7 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await fetch("/api/post/getPosts?limit=6")
+      const res = await fetch(`${baseURL}/api/post/getPosts?limit=6`)
       const data = await res.json()
       if (res.ok) setPosts(data.posts)
     }

@@ -22,7 +22,7 @@ const GoogleAuth = () => {
     try {
       const firebaseResponse = await signInWithPopup(auth, provider)
 
-      const res = await fetch(`${baseURL}/auth/google`, {
+      const res = await fetch(`${baseURL}/api/auth/google`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

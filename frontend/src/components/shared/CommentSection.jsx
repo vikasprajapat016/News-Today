@@ -29,7 +29,7 @@ const CommentSection = ({ postId }) => {
     }
 
     try {
-     const res = await fetch("${baseURL}/comment/create", {
+     const res = await fetch(`${baseURL}/api/comment/create`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const CommentSection = ({ postId }) => {
   useEffect(() => {
     const getComments = async () => {
       try {
-        const res = await fetch(`${baseURL}/comment/getPostComments/${postId}`)
+        const res = await fetch(`${baseURL}/api/comment/getPostComments/${postId}`)
 
         if (res.ok) {
           const data = await res.json()
@@ -81,7 +81,7 @@ const CommentSection = ({ postId }) => {
         return
       }
 
-      const res = await fetch(`${baseURL}/comment/likeComment/${commentId}`, {
+      const res = await fetch(`${baseURL}/api/comment/likeComment/${commentId}`, {
         method: "PUT",
       })
 
@@ -123,7 +123,7 @@ const handleEdit = async (comment, editedContent) => {
         return
       }
 
-      const res = await fetch(`${baseURL}/comment/deleteComment/${commentId}`, {
+      const res = await fetch(`${baseURL}/api/comment/deleteComment/${commentId}`, {
         method: "DELETE",
       })
 

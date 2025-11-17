@@ -18,16 +18,19 @@ mongoose
 const app = express();
 
 // === CORS MUST BE FIRST ===
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://news-today-lm8p-git-main-vikas-projects-255d0fe9.vercel.app",
+  "https://news-today-lm8p-fr1rpreyj-vikas-projects-255d0fe9.vercel.app"
+];
+
 app.use(
   cors({
-    origin: [
-      "https://news-today-lm8p.vercel.app",
-      "https://news-today-4258.onrender.com",
-      "http://localhost:5173",
-    ],
+    origin: allowedOrigins,
     credentials: true,
   })
 );
+
 
 // Required on some hosts (Render included)
 app.use((req, res, next) => {

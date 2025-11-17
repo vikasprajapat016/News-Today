@@ -31,7 +31,7 @@ const Comment = ({ comment, onLike, onEdit, onDelete }) => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await fetch(`${baseURL}/user/${comment.userId}`)
+        const res = await fetch(`${baseURL}/api/user/${comment.userId}`)
         const data = await res.json()
         if (res.ok) setUser(data)
       } catch (error) {
@@ -50,7 +50,7 @@ const Comment = ({ comment, onLike, onEdit, onDelete }) => {
 
   const handleSave = async () => {
     try {
-      const res = await fetch(`${baseURL}/comment/editComment/${comment._id}`, {
+      const res = await fetch(`${baseURL}/api/comment/editComment/${comment._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content: editedContent }),

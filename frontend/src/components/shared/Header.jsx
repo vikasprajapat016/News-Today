@@ -40,7 +40,7 @@ const [searchTerm, setSearchTerm] = useState("")
 
      const handleSignout = async () => {
     try {
-      const res = await fetch(`${baseURL}/user/signout`, {
+      const res = await fetch(`${baseURL}/api/user/signout`, {
         method: "POST",
       })
 

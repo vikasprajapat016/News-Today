@@ -59,7 +59,7 @@ const Search = () => {
 
       const searchQuery = urlParams.toString()
 
-      const res = await fetch(`${baseURL}/post/getposts?${searchQuery}`)
+      const res = await fetch(`${baseURL}/api/post/getposts?${searchQuery}`)
 
       if (!res.ok) {
         setLoading(false)
@@ -111,7 +111,7 @@ const Search = () => {
 
     const searchQuery = urlParams.toString()
 
-    const res = await fetch(`${baseURL}/post/getposts?${searchQuery}`)
+    const res = await fetch(`${baseURL}/api/post/getposts?${searchQuery}`)
 
     if (!res.ok) {
       return

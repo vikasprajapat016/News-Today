@@ -108,7 +108,7 @@ const handleUploadImage = async () => {
       }
 
       const res = await axios.post(
-        `${baseURL}/post/create`,
+        `${baseURL}/api/post/create`,
         postData,
         { withCredentials: true }
       )

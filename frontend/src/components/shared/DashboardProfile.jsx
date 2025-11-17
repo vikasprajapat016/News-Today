@@ -87,7 +87,7 @@ const DashboardProfile = () => {
 
       console.log("Update data:", updateProfile)
 
-      const res = await fetch(`${baseURL}/user/update/${currentUser._id}`, {
+      const res = await fetch(`${baseURL}/api/user/update/${currentUser._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updateProfile),
@@ -115,7 +115,7 @@ const DashboardProfile = () => {
     try {
       dispatch(deleteUserStart())
 
-      const res = await fetch(`${baseURL}/user/delete/${currentUser._id}`, {
+      const res = await fetch(`${baseURL}/api/user/delete/${currentUser._id}`, {
         method: "DELETE",
       })
 
@@ -134,7 +134,7 @@ const DashboardProfile = () => {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch(`${baseURL}/user/signout`, {
+      const res = await fetch(`${baseURL}/api/user/signout`, {
         method: "POST",
       })
 
