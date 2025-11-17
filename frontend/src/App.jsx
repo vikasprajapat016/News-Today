@@ -9,10 +9,10 @@ import Header from "./components/shared/Header"
 import { Toaster } from "sonner"   // ✅ FIXED
 import Footer from "./components/shared/Footer";
 import PrivateRoute from "./components/shared/PrivateRoute"
-import CreatePost from "./pages/CreatePost"
+import CreatePost from "./Pages/CreatePost"
 import AdminPrivateRoute from "./components/shared/AdminPrivateRoute"
-import EditPost from "./pages/EditPost"
-import PostDetails from "./pages/PostDetails"
+import EditPost from "./Pages/EditPost"
+import PostDetails from "./Pages/PostDetails"
 import ScrollToTop from "./components/shared/ScrollToTop"
 import Search from "./pages/Search"
 
