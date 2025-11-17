@@ -19,6 +19,10 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
+const baseURL =
+  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+
+
 const EditPost = () => {
   const { postId } = useParams()
   const navigate = useNavigate()
@@ -38,7 +42,7 @@ const EditPost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`/api/post/getposts?postId=${postId}`)
+        const res = await axios.get(`${baseURL}/post/getposts?postId=${postId}`)
         const data = res.data.posts?.[0]
         if (data) {
           setTitle(data.title)
@@ -110,7 +114,7 @@ const EditPost = () => {
       }
 
       const res = await axios.put(
-        `/api/post/updatepost/${postId}/${currentUser._id}`,
+        `${baseURL}/post/updatepost/${postId}/${currentUser._id}`,
         updatedData,
         { withCredentials: true }
       )

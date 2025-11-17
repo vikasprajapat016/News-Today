@@ -17,6 +17,9 @@ import {
 import { Input } from "@/components/ui/input"
 import GoogleAuth from "@/components/shared/GoogleAuth"
 
+const baseURL =
+  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+
 
 const formSchema = z.object({
   username: z
@@ -50,11 +53,12 @@ const SignUpForm = () => {
       setLoading(true)
       setErrorMessage(null)
 
-      const res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      })
+      const res = await fetch(`${baseURL}/auth/signup`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(values),
+})
+
 
       const data = await res.json()
 

@@ -4,117 +4,119 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { motion } from "framer-motion"
 
 const Home = () => {
   const [posts, setPosts] = useState([])
 
-  // console.log(posts)
-
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await fetch("/api/post/getPosts?limit=6")
-
       const data = await res.json()
-
-      if (res.ok) {
-        setPosts(data.posts)
-      }
+      if (res.ok) setPosts(data.posts)
     }
 
     fetchPosts()
   }, [])
 
   return (
-    <div>
-      <div className="flex flex-col gap-6 p-28 max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-blue-800">
-          Welcome to <span className="text-red-600"> News Today</span>
-        </h1>
+    <div className="bg-gray-50">
+      {/* HERO SECTION */}
+      <section className="bg-gradient-to-r from-blue-800 via-blue-600 to-blue-400 text-white py-24 px-6 text-center">
+        <motion.h1
+          className="text-5xl font-extrabold drop-shadow-lg"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          Welcome to <span className="text-yellow-300">News Today</span>
+        </motion.h1>
 
-        <p className="text-gray-600 mt-3 text-lg">
-          Your trusted source for the latest headlines, in-depth analysis, and
-          breaking news every morning.
+        <motion.p
+          className="text-lg mt-4 max-w-2xl mx-auto opacity-90"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          Your trusted source for breaking news, insightful articles, and
+          top-tier journalism — all in one place.
+        </motion.p>
+
+        <motion.div
+          className="mt-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
+          <Link to="/search">
+            <Button className="text-lg px-6 py-3 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold shadow-lg rounded-full flex items-center gap-2">
+              View All Posts <ArrowRight />
+            </Button>
+          </Link>
+        </motion.div>
+      </section>
+
+      {/* FEATURES SECTION */}
+      <section className="py-20 px-6 max-w-7xl mx-auto text-center">
+        <h2 className="text-4xl font-bold text-slate-800">Why Choose Us?</h2>
+        <p className="text-gray-500 mt-2 mb-12">
+          We bring fast, reliable and premium content to the digital world.
         </p>
 
-        <p className="text-gray-500 mt-1 italic">Stay informed, stay ahead.</p>
-
-        <Link to={"/search"}>
-          <Button className="bg-yellow-400 hover:bg-yellow-600 text-black py-3 px-6 rounded-full font-semibold shadow-lg flex items-center gap-2 w-fit">
-            View all posts <ArrowRight className="h-5 w-5" />
-          </Button>
-        </Link>
-      </div>
-
-      <section className="pb-16 bg-white">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-8 text-gray-800">
-            Why You'll Love News Today
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <FeatureCard
-              title={"Diverse Content"}
-              description={
-                "Explore news on a variety of topics, from technology to lifestyle."
-              }
-              icon="📚"
-            />
-
-            <FeatureCard
-              title={"Community Driven"}
-              description={
-                "Connect with writers and readers who share your interests."
-              }
-              icon="🌐"
-            />
-
-            <FeatureCard
-              title={"Easy to Use"}
-              description={
-                "A seamless platform for sharing and discovering great content."
-              }
-              icon="🚀"
-            />
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <FeatureCard icon="📰" title="Breaking News" desc="Trustworthy coverage for the latest events worldwide." />
+          <FeatureCard icon="👥" title="Community Based" desc="Built for readers, writers & daily news consumers." />
+          <FeatureCard icon="⚡" title="Lightning Fast" desc="Optimized technology delivering news instantly." />
         </div>
       </section>
 
-      <div className="p-3 bg-white">
+      {/* Advertise Section */}
+      <div className="p-6">
         <Advertise />
       </div>
 
-      <div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 py-7">
-        {posts && posts.length > 0 && (
-          <div className="flex flex-col gap-6">
-            <h2 className="text-2xl font-bold text-slate-700">Recent Posts</h2>
+      {/* RECENT POSTS */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        {posts?.length > 0 && (
+          <>
+            <h2 className="text-3xl font-bold text-slate-800 mb-8">Latest Headlines</h2>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
               {posts.map((post) => (
-                <PostCard key={post._id} post={post} />
+                <motion.div
+                  key={post._id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <PostCard post={post} />
+                </motion.div>
               ))}
             </div>
 
-            <Link
-              to={"/search"}
-              className="text-lg hover:underline text-center font-semibold"
-            >
-              View all news
-            </Link>
-          </div>
+            <div className="text-center mt-10">
+              <Link to="/search">
+                <button className="font-semibold text-blue-600 hover:underline">
+                  View all news →
+                </button>
+              </Link>
+            </div>
+          </>
         )}
-      </div>
+      </section>
     </div>
   )
 }
 
-const FeatureCard = ({ title, description, icon }) => {
-  return (
-    <div className="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
-      <div className="text-5xl mb-4">{icon}</div>
-      <h3 className="text-2xl font-semibold text-gray-800 mb-2">{title}</h3>
-      <p className="text-gray-600">{description}</p>
-    </div>
-  )
-}
+const FeatureCard = ({ icon, title, desc }) => (
+  <motion.div
+    className="p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl border border-gray-200 transition-all duration-300"
+    whileHover={{ scale: 1.04 }}
+  >
+    <div className="text-5xl mb-4">{icon}</div>
+    <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
+    <p className="text-gray-500 mt-2">{desc}</p>
+  </motion.div>
+)
 
 export default Home

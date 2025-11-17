@@ -24,6 +24,10 @@ import {
 import { FaCheck } from "react-icons/fa"
 import { RxCross2 } from "react-icons/rx"
 
+const baseURL =
+  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+
+
 const DashboardUsers = () => {
   const { currentUser } = useSelector((state) => state.user)
 
@@ -36,7 +40,7 @@ const DashboardUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch(`/api/user/getusers`)
+        const res = await fetch(`${baseURL}/user/getusers`)
 
         const data = await res.json()
 
@@ -61,7 +65,7 @@ const DashboardUsers = () => {
     const startIndex = users.length
 
     try {
-      const res = await fetch(`/api/user/getusers?startIndex=${startIndex}`)
+      const res = await fetch(`${baseURL}/user/getusers?startIndex=${startIndex}`)
 
       const data = await res.json()
 
@@ -79,7 +83,7 @@ const DashboardUsers = () => {
 
   const handleDeleteUser = async () => {
  try {
-      const res = await fetch(`/api/user/delete/${userIdToDelete}`, {
+      const res = await fetch(`${baseURL}/user/delete/${userIdToDelete}`, {
         method: "DELETE",
       })
 

@@ -5,14 +5,20 @@ import { useDispatch, useSelector } from "react-redux"
 import { FaHome, FaSignOutAlt, FaUserAlt } from "react-icons/fa"
 import { Link } from "react-router-dom"
 
+const baseURL =
+  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+
+
 const BottomNavBar = () => {
  const dispatch = useDispatch()
  const { currentUser } = useSelector((state) => state.user)
 
   const handleSignout = async () => {
     try {
-      const res = await fetch("/api/user/signout", {
-        method: "POST",
+     const res = await fetch(`${baseURL}/user/signout`, {
+  method: "POST",
+
+
       })
 
       const data = await res.json()

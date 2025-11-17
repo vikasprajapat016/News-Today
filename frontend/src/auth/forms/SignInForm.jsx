@@ -22,6 +22,8 @@ import {
 } from "@/redux/user/userSlice"
 import GoogleAuth from "@/components/shared/GoogleAuth"
 
+const baseURL =
+  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
@@ -47,11 +49,12 @@ const SignInForm = () => {
     try {
       dispatch(signInStart())
 
-      const res = await fetch("/api/auth/signin", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      })
+     const res = await fetch(`${baseURL}/auth/signin`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(values),
+})
+
 
       const data = await res.json()
 

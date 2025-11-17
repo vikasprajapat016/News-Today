@@ -23,6 +23,10 @@ import {
 import { FaCheck } from "react-icons/fa"
 import { RxCross2 } from "react-icons/rx"
 
+const baseURL =
+  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+
+
 const DashboardComments = () => {
   const { currentUser } = useSelector((state) => state.user)
 
@@ -35,7 +39,7 @@ const DashboardComments = () => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const res = await fetch(`/api/comment/getcomments`)
+        const res = await fetch(`${baseURL}/comment/getcomments`)
 
         const data = await res.json()
 
@@ -61,7 +65,7 @@ const DashboardComments = () => {
 
     try {
       const res = await fetch(
-        `/api/comment/getcomments?startIndex=${startIndex}`
+        `${baseURL}/comment/getcomments?startIndex=${startIndex}`
       )
 
       const data = await res.json()
@@ -81,7 +85,7 @@ const DashboardComments = () => {
   const handleDeleteComment = async () => {
     try {
       const res = await fetch(
-        `/api/comment/deleteComment/${commentIdToDelete}`,
+        `${baseURL}/comment/deleteComment/${commentIdToDelete}`,
         {
           method: "DELETE",
         }

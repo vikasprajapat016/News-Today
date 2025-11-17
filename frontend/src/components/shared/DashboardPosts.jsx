@@ -21,6 +21,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog"
+
+const baseURL =
+  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+
+
 const DashboardPosts = () => {
   const { currentUser } = useSelector((state) => state.user)
 
@@ -32,7 +37,7 @@ const DashboardPosts = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch(`/api/post/getposts?userId=${currentUser._id}`)
+        const res = await fetch(`${baseURL}/post/getposts?userId=${currentUser._id}`)
 
         const data = await res.json()
 
@@ -58,7 +63,7 @@ const DashboardPosts = () => {
 
     try {
       const res = await fetch(
-        `/api/post/getposts?userId=${currentUser._id}&startIndex=${startIndex}`
+        `${baseURL}/post/getposts?userId=${currentUser._id}&startIndex=${startIndex}`
       )
 
       const data = await res.json()
@@ -80,7 +85,7 @@ const DashboardPosts = () => {
 
     try {
       const res = await fetch(
-        `/api/post/deletepost/${postIdToDelete}/${currentUser._id}`,
+        `${baseURL}/post/deletepost/${postIdToDelete}/${currentUser._id}`,
         {
           method: "DELETE",
         }

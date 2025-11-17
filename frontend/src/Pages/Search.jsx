@@ -14,6 +14,10 @@ import { Separator } from "@/components/ui/separator"
 import React, { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 
+const baseURL =
+  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+
+
 const Search = () => {
   const location = useLocation()
   const navigate = useNavigate()
@@ -55,7 +59,7 @@ const Search = () => {
 
       const searchQuery = urlParams.toString()
 
-      const res = await fetch(`/api/post/getposts?${searchQuery}`)
+      const res = await fetch(`${baseURL}/post/getposts?${searchQuery}`)
 
       if (!res.ok) {
         setLoading(false)
@@ -107,7 +111,7 @@ const Search = () => {
 
     const searchQuery = urlParams.toString()
 
-    const res = await fetch(`/api/post/getposts?${searchQuery}`)
+    const res = await fetch(`${baseURL}/post/getposts?${searchQuery}`)
 
     if (!res.ok) {
       return

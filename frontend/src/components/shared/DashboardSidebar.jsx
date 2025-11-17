@@ -5,13 +5,17 @@ import { signOutSuccess } from "@/redux/user/userSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { IoIosCreate, IoIosDocument } from "react-icons/io"
 
+const baseURL =
+  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+
+
 const DashboardSidebar = () => {
   const dispatch = useDispatch()
   const { currentUser } = useSelector((state) => state.user)
 
   const handleSignout = async () => {
     try {
-      const res = await fetch("/api/user/signout", {
+      const res = await fetch(`${baseURL}/api/user/signout`, {
         method: "POST",
       })
 

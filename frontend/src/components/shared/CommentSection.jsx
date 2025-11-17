@@ -6,6 +6,10 @@ import { Button } from "../ui/button"
 import { toast } from "sonner"
 import Comment from "./Comment"
 
+const baseURL =
+  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+
+
 const CommentSection = ({ postId }) => {
   const navigate = useNavigate()
 
@@ -25,7 +29,7 @@ const CommentSection = ({ postId }) => {
     }
 
     try {
-     const res = await fetch("http://localhost:5000/api/comment/create", {
+     const res = await fetch("${baseURL}/comment/create", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -55,7 +59,7 @@ const CommentSection = ({ postId }) => {
   useEffect(() => {
     const getComments = async () => {
       try {
-        const res = await fetch(`/api/comment/getPostComments/${postId}`)
+        const res = await fetch(`${baseURL}/comment/getPostComments/${postId}`)
 
         if (res.ok) {
           const data = await res.json()
@@ -77,7 +81,7 @@ const CommentSection = ({ postId }) => {
         return
       }
 
-      const res = await fetch(`/api/comment/likeComment/${commentId}`, {
+      const res = await fetch(`${baseURL}/comment/likeComment/${commentId}`, {
         method: "PUT",
       })
 
@@ -119,7 +123,7 @@ const handleEdit = async (comment, editedContent) => {
         return
       }
 
-      const res = await fetch(`/api/comment/deleteComment/${commentId}`, {
+      const res = await fetch(`${baseURL}/comment/deleteComment/${commentId}`, {
         method: "DELETE",
       })
 

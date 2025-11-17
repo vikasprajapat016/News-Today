@@ -18,6 +18,11 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
+
+const baseURL =
+  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+
+
 const CreatePost = () => {
   const navigate = useNavigate()
 
@@ -103,7 +108,7 @@ const handleUploadImage = async () => {
       }
 
       const res = await axios.post(
-        "http://localhost:5000/api/post/create",
+        `${baseURL}/post/create`,
         postData,
         { withCredentials: true }
       )

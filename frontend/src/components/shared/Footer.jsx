@@ -49,7 +49,7 @@ const Footer = () => {
             Phulera, Jaipur, Rajsathan , India
           </p>
 
-          <p className="text-gray-400 text-sm">Email: vikas016@gmail.com</p>
+          <p className="text-gray-400 text-sm">Email: vikasprajapat016@gmail.com</p>
 
           <p className="text-gray-400 text-sm">Phone: +91 6377407552</p>
         </div>

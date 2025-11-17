@@ -6,6 +6,8 @@ import Advertise from "@/components/shared/Advertise"
 import CommentSection from "@/components/shared/CommentSection"
 import PostCard from "@/components/shared/PostCard"
 
+const baseURL =
+  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
 
 
 const PostDetails = () => {
