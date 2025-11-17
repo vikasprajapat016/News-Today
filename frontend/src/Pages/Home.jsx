@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react"
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
+const baseURL = import.meta.env.VITE_API_URL || "";
 
 const Home = () => {
   const [posts, setPosts] = useState([])

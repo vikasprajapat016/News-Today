@@ -16,9 +16,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import GoogleAuth from "@/components/shared/GoogleAuth"
+const baseURL = import.meta.env.VITE_API_URL || "";
 
-const baseURL =
-  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
 
 
 const formSchema = z.object({

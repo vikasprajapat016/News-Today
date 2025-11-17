@@ -19,8 +19,7 @@ import {
 } from "@/components/ui/select"
 
 
-const baseURL =
-  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+const baseURL = import.meta.env.VITE_API_URL || "";
 
 
 const CreatePost = () => {

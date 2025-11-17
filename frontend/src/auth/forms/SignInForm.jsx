@@ -22,8 +22,8 @@ import {
 } from "@/redux/user/userSlice"
 import GoogleAuth from "@/components/shared/GoogleAuth"
 
-const baseURL =
-  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+const baseURL = import.meta.env.VITE_API_URL || "";
+
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),

@@ -7,8 +7,7 @@ import DashboardPosts from "@/components/shared/DashboardPosts"
 import DashboardUsers from "@/components/shared/DashboardUsers"
 import DashboardComments from "@/components/shared/DashboardComments"
 
-const baseURL =
-  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+const baseURL = import.meta.env.VITE_API_URL || "";
 
 
 const Dashboard = () => {

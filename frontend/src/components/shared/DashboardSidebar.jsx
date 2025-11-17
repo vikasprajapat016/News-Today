@@ -5,8 +5,7 @@ import { signOutSuccess } from "@/redux/user/userSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { IoIosCreate, IoIosDocument } from "react-icons/io"
 
-const baseURL =
-  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+const baseURL = import.meta.env.VITE_API_URL || "";
 
 
 const DashboardSidebar = () => {

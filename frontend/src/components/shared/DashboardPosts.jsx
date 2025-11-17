@@ -22,8 +22,7 @@ import {
   AlertDialogTrigger,
 } from "../ui/alert-dialog"
 
-const baseURL =
-  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+const baseURL = import.meta.env.VITE_API_URL || "";
 
 
 const DashboardPosts = () => {

@@ -13,8 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { signOutSuccess } from "@/redux/user/userSlice"
 
-const baseURL =
-  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+const baseURL = import.meta.env.VITE_API_URL || "";
 
 
 const Header = () => {

@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { FaHome, FaSignOutAlt, FaUserAlt } from "react-icons/fa"
 import { Link } from "react-router-dom"
 
-const baseURL =
-  import.meta.env.MODE === "development" ? "/api" : import.meta.env.VITE_API_URL
+const baseURL = import.meta.env.VITE_API_URL || "";
 
 
 const BottomNavBar = () => {
