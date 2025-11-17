@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(
   cors({
    origin: [
-  "https://news-today-front-fgeontpnc-vikas-projects-255d0fe9.vercel.app",
+  "https://news-today-lm8p.vercel.app/",
   "http://localhost:5173"
 ],
 credentials: true
