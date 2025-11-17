@@ -22,11 +22,12 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173", // local development
-      "https://news-today-frontend.vercel.app", // your deployed frontend (change when deployed)
-    ],
-    credentials: true,
+   origin: [
+  "https://news-today-front-fgeontpnc-vikas-projects-255d0fe9.vercel.app",
+  "http://localhost:5173"
+],
+credentials: true
+
   })
 );
 
