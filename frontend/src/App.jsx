@@ -14,7 +14,7 @@ import AdminPrivateRoute from "./components/shared/AdminPrivateRoute"
 import EditPost from "./Pages/EditPost"
 import PostDetails from "./Pages/PostDetails"
 import ScrollToTop from "./components/shared/ScrollToTop"
-import Search from "./pages/Search"
+import Search from "./Pages/Search"
 
 function App() {
   return (
