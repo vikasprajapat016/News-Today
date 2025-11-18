@@ -72,12 +72,14 @@ const handleSubmit = (e) => {
   return (
     <header className='shadow-lg sticky'>
       <div className=' flex justify-between items-center max-w-6xl lg:max-w-7xl mx-auto py-4 '>
-      <Link to={"/"}>
-      <h1 className=' font-bold text-xl sm:text-2xl flex flex-wrap'>
-        <span className='text-slate-500'>News</span>
-        <span className='text-slate-900'>Today</span>
-      </h1>
-      </Link>
+      <Link to={"/"} className="flex items-center gap-2">
+  <img
+    src="/logo.png"
+    alt="NewsToday Logo"
+    className="w-36 h-36 sm:w-42 sm:h-42 rounded-full object-cover "
+  />
+</Link>
+
 
        <form
           className="p-3 bg-slate-100 rounded-lg flex items-center"

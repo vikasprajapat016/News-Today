@@ -22,8 +22,6 @@ const allowedOrigins = [
   "http://localhost:5173",
   "https://newstoday-rho.vercel.app",
     "https://newstoday.vercel.app",
-  "https://news-today-lm8p-git-main-vikas-projects-255d0fe9.vercel.app",
-  "https://news-today-lm8p-fr1rpreyj-vikas-projects-255d0fe9.vercel.app"
 ];
 
 app.use(
