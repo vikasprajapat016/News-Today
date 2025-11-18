@@ -7,18 +7,13 @@ import DashboardPosts from "@/components/shared/DashboardPosts"
 import DashboardUsers from "@/components/shared/DashboardUsers"
 import DashboardComments from "@/components/shared/DashboardComments"
 
-const baseURL = import.meta.env.VITE_API_URL || "";
-
-
 const Dashboard = () => {
   const location = useLocation()
-  const [tab, setTab] = useState("")
+  const [tab, setTab] = useState("profile")
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search)
     const tabFromUrl = urlParams.get("tab")
-
-    // console.log(tabFromUrl)
 
     if (tabFromUrl) {
       setTab(tabFromUrl)
@@ -26,25 +21,25 @@ const Dashboard = () => {
   }, [location.search])
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row w-full">
-      {/* Sidebar */}
+    <div className="relative min-h-screen flex flex-col md:flex-row w-full">
+
+      {/* Desktop Sidebar */}
       <div className="hidden md:block">
         <DashboardSidebar />
       </div>
 
+      {/* Mobile Bottom Nav */}
       <BottomNavBar />
- <div className="w-full">
-        {/* profile */}
+
+      {/* Main Dashboard Content */}
+      <div className="w-full pb-24 md:pb-0 px-3 md:px-6">
         {tab === "profile" && <DashboardProfile />}
-
-        {/* news articles */}
         {tab === "posts" && <DashboardPosts />}
-         {/*users */}
         {tab === "users" && <DashboardUsers />}
-
-         {/* comments */}
         {tab === "comments" && <DashboardComments />}
-
       </div>
- </div>  )}
+    </div>
+  )
+}
+
 export default Dashboard
