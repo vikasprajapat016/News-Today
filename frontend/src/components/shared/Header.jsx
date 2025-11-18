@@ -158,7 +158,8 @@ const Header = () => {
 
           {currentUser ? (
             <>
-             
+                           <Link to="/dashboard?tab=profile">Profile</Link>
+
               <button className="text-left text-red-600 font-semibold" onClick={handleSignout}>
                 Sign Out
               </button>
